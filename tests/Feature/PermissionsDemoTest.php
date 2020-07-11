@@ -49,10 +49,10 @@ class PermissionsDemoTest extends TestCase
      */
     public function it_shows_message_confirming_permission_is_granted()
     {
-        $user = factory(\App\User::class)->create();
+        $user = factory(\App\Models\User::class)->create();
         $user->assignRole('writer');
 
-        $response = $this->actingAs(\App\User::find($user->id))->get('/');
+        $response = $this->actingAs(\App\Models\User::find($user->id))->get('/');
 
         $response->assertDontSeeText('@hasrole');
 

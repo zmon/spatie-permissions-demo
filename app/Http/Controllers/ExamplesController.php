@@ -10,7 +10,7 @@ class ExamplesController extends Controller
     {
 //        $user = auth()->user();
 //        or
-        $user = \App\User::find(1);
+        $user = \App\Models\User::find(1);
         $roles = $user->getRoleNames();
 
         return var_export($roles, true);
