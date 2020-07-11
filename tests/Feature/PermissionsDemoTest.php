@@ -2,10 +2,10 @@
 
 namespace Tests\Feature;
 
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\PermissionRegistrar;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class PermissionsDemoTest extends TestCase
@@ -56,7 +56,6 @@ class PermissionsDemoTest extends TestCase
 
         $response->assertDontSeeText('@hasrole');
 
-        $response->assertSeeText("You have permission to [edit articles].");
+        $response->assertSeeText('You have permission to [edit articles].');
     }
-
 }

@@ -2,17 +2,18 @@
 
 namespace Tests\Feature;
 
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\PermissionRegistrar;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class PostsTest extends TestCase
 {
     use RefreshDatabase;
 
-    protected $author, $admin;
+    protected $author;
+    protected $admin;
 
     public function setUp(): void
     {
@@ -127,7 +128,6 @@ class PostsTest extends TestCase
         $response->assertStatus(403);
     }
 
-
     /** @test */
     public function authors_can_view_posts()
     {
@@ -215,5 +215,4 @@ class PostsTest extends TestCase
         $response->assertStatus(302);
         $response->assertDontSee('first post.');
     }
-
 }

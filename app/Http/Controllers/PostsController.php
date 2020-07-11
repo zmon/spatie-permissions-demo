@@ -12,6 +12,7 @@ class PostsController extends Controller
         $this->middleware('auth')->except(['index', 'show']);
 //        $this->authorizeResource('post');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -112,9 +113,9 @@ class PostsController extends Controller
             'published' => 'boolean',
         ]);
 
-        $post->title     = $request->input('title');
-        $post->body      = $request->input('body');
-        $post->published = (bool)$request->input('published');
+        $post->title = $request->input('title');
+        $post->body = $request->input('body');
+        $post->published = (bool) $request->input('published');
         $post->save();
 
         return view('posts.show', compact('post'));

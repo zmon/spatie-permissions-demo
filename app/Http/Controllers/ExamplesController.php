@@ -15,8 +15,8 @@ class ExamplesController extends Controller
 
         return var_export($roles, true);
 
-// output:
-/**
+        // output:
+/*
         Collection {
           #items: array:1 [
             0 => "writer"
