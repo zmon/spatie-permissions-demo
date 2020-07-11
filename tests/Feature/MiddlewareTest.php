@@ -2,10 +2,10 @@
 
 namespace Tests\Feature;
 
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\PermissionRegistrar;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class MiddlewareTest extends TestCase
@@ -23,13 +23,13 @@ class MiddlewareTest extends TestCase
         $role1->givePermissionTo($permission);
         $role2->givePermissionTo($permission);
 
-        $user = factory(\App\User::class)->create([
+        $user = factory(\App\Models\User::class)->create([
             'name' => 'Example User',
             'email' => 'test@example.com',
         ]);
         $user->assignRole($role2);
 
-        $user = \App\User::first();
+        $user = \App\Models\User::first();
         $this->withoutExceptionHandling()->actingAs($user)->assertAuthenticated();
 
         $response = $this->get('/testmiddleware');

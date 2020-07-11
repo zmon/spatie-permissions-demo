@@ -33,7 +33,7 @@ class PermissionsDemoSeeder extends Seeder
         $role2->givePermissionTo('unpublish articles');
 
         // create a demo user
-        $user = Factory(App\User::class)->create([
+        $user = Factory(App\Models\User::class)->create([
             'name' => 'Example User',
             'email' => 'test@example.com',
             // factory default password is 'password'
